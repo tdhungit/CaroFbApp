@@ -1,0 +1,1 @@
+<afb:login label="Login" scope="email, read_stream, read_friendlists, user_actions.video" class="btn"></afb:login>
