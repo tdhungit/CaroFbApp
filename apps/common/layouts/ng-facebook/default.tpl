@@ -22,7 +22,9 @@
 </head>
 <body>
 
-    {{ get_content() }}
+    <div id="wrapper">
+        {{ get_content() }}
+    </div>
 
 </body>
 </html>
