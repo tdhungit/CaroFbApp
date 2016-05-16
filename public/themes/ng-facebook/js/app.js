@@ -24,7 +24,7 @@ var app = angular.module('CaroFbApp', ['angularjs-facebook-sdk', 'ui.bootstrap']
             var statusChangeHandler = function (response) {
                 console.log(response);
                 if (response.status === 'connected') {
-                    $scope.game_result = "Bạn là Hulk";
+                    $scope.game_result = "Bạn đích thị là 1 iron man đẹp trai, con nhà giàu, học giỏi rồi";
                     $scope.is_result = true;
                 }
             };
