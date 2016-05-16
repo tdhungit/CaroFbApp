@@ -17,4 +17,9 @@ class IndexController extends ControllerCustom
     {
         
     }
+
+    public function marvel_guysAction()
+    {
+        
+    }
 }

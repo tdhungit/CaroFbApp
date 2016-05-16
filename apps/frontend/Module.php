@@ -55,6 +55,10 @@ class Module
                     $volt->setOptions(array(
                         "compiledPath" => "../apps/cache/volt/"
                     ));
+                    // ng
+                    $volt->getCompiler()->addFunction('ng', function ($input) {
+                        return '"{{ ".' . $input . '." }}"';
+                    });
                     return $volt;
                 }
             ));

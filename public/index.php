@@ -73,6 +73,13 @@ try {
             'action' => 'index'
         ));
 
+        // app
+        $router->add('/marvel-guys', array(
+            'module' => 'frontend',
+            'controller' => 'index',
+            'action' => 'marvel_guys'
+        ));
+
         return $router;
     };
 

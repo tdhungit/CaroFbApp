@@ -8,6 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="{{ static_url(theme_uri) }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ static_url(theme_uri) }}/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- AngularJS -->
     <script src="{{ static_url(theme_uri) }}/js/angular.min.js"></script>

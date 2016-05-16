@@ -2,12 +2,10 @@ var app = angular.module('CaroFbApp', ['angularjs-facebook-sdk', 'ui.bootstrap']
 
     .config(function facebookConfig(facebookConfigProvider) {
         facebookConfigProvider.setAppId(176587859036054);
-        facebookConfigProvider.setOptions({ status: false });
+        facebookConfigProvider.setOptions({ status: true });
     })
     .run(function (facebookConfig, facebookService) {
         facebookService.ready.then(function () {
-            console.log('Facebook is ready!');
-
             var statusChangeHandler = function (response) {
                 if (response.status === 'connected') {
                     facebookService.api('/me').then(function (response) {
@@ -19,5 +17,19 @@ var app = angular.module('CaroFbApp', ['angularjs-facebook-sdk', 'ui.bootstrap']
             facebookService.Event.subscribe('auth.statusChange', statusChangeHandler);
         });
     })
-    
+    .controller('MarvelGuysController', function($scope, facebookService) {
+        $scope.is_result = false;
+        $scope.game_result = "";
+        facebookService.ready.then(function () {
+            var statusChangeHandler = function (response) {
+                console.log(response);
+                if (response.status === 'connected') {
+                    $scope.game_result = "Bạn là Hulk";
+                    $scope.is_result = true;
+                }
+            };
+
+            facebookService.Event.subscribe('auth.statusChange', statusChangeHandler);
+        });
+    })
 ;
