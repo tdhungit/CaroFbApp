@@ -169,7 +169,8 @@ class ControllerBase extends MyController
             return include $file_menu;
         } else {
             $parent_menus = Menus::find(array(
-                'conditions' => "deleted = 0 AND (parent_id IS NULL OR parent_id = '')"
+                'conditions' => "deleted = 0 AND (parent_id IS NULL OR parent_id = '')",
+                'order' => 'weight ASC'
             ));
             if ($parent_menus) {
                 $i = 0;
@@ -177,7 +178,8 @@ class ControllerBase extends MyController
                     $menus[$i] = $p_menus;
                     $menus[$i]['children'] = Menus::find(array(
                         'conditions' => "deleted = 0 AND parent_id = :menu_id:",
-                        'bind' => array('menu_id' => $p_menus['id'])
+                        'bind' => array('menu_id' => $p_menus['id']),
+                        'order' => 'weight ASC'
                     ))->toArray();
                     $i++;
                 }
@@ -653,9 +655,10 @@ class ControllerBase extends MyController
                 if ($upload_result) {
                     $isUploaded = true;
                     $data_upload[] = array(
+                        'folder' => $base_path['folder'],
                         'name' => $file->getName(),
                         'size' => $file->getSize(),
-                        'path' => $this->url->get($base_path['sub_folder']) . $file_upload_name
+                        'path' => $this->url->get($base_path['uri']) . $file_upload_name
                     );
                 } else {
                     $isUploaded = false;
